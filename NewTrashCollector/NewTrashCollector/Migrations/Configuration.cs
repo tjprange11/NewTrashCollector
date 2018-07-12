@@ -33,37 +33,37 @@ namespace NewTrashCollector.Migrations
             if(context.PickUpDays.ToList().Count == 0)
             {
                 PickUpDay pickUp = new PickUpDay();
-                pickUp.Day = "Monday";
+                pickUp.Day = DayOfWeek.Monday;
                 context.PickUpDays.Add(pickUp);
                 context.SaveChanges();
 
                 PickUpDay pickUp2 = new PickUpDay();
-                pickUp2.Day = "Tuesday";
+                pickUp2.Day = DayOfWeek.Tuesday;
                 context.PickUpDays.Add(pickUp2);
                 context.SaveChanges();
 
                 PickUpDay pickUp3 = new PickUpDay();
-                pickUp3.Day = "Wednesday";
+                pickUp3.Day = DayOfWeek.Wednesday;
                 context.PickUpDays.Add(pickUp3);
                 context.SaveChanges();
 
                 PickUpDay pickUp4 = new PickUpDay();
-                pickUp4.Day = "Thursday";
+                pickUp4.Day = DayOfWeek.Thursday;
                 context.PickUpDays.Add(pickUp4);
                 context.SaveChanges();
 
                 PickUpDay pickUp5 = new PickUpDay();
-                pickUp5.Day = "Friday";
+                pickUp5.Day = DayOfWeek.Friday;
                 context.PickUpDays.Add(pickUp5);
                 context.SaveChanges();
 
                 PickUpDay pickUp6 = new PickUpDay();
-                pickUp6.Day = "Saturday";
+                pickUp6.Day = DayOfWeek.Saturday;
                 context.PickUpDays.Add(pickUp6);
                 context.SaveChanges();
 
                 PickUpDay pickUp7 = new PickUpDay();
-                pickUp7.Day = "Sunday";
+                pickUp7.Day = DayOfWeek.Sunday;
                 context.PickUpDays.Add(pickUp7);
                 context.SaveChanges();
 

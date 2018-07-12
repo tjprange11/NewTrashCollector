@@ -197,19 +197,16 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
+    <Compile Include="Controllers\EmployeesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SuspendedTimesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201807120214134_database.cs" />
-    <Compile Include="Migrations\201807120214134_database.Designer.cs">
-      <DependentUpon>201807120214134_database.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201807120535123_sus.cs" />
-    <Compile Include="Migrations\201807120535123_sus.Designer.cs">
-      <DependentUpon>201807120535123_sus.cs</DependentUpon>
+    <Compile Include="Migrations\201807121648325_database.cs" />
+    <Compile Include="Migrations\201807121648325_database.Designer.cs">
+      <DependentUpon>201807121648325_database.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -341,6 +338,12 @@
     <Content Include="Views\SuspendedTimes\Edit.cshtml" />
     <Content Include="Views\SuspendedTimes\Index.cshtml" />
     <Content Include="Views\Customers\Home.cshtml" />
+    <Content Include="Views\Employees\Create.cshtml" />
+    <Content Include="Views\Employees\Delete.cshtml" />
+    <Content Include="Views\Employees\Details.cshtml" />
+    <Content Include="Views\Employees\Edit.cshtml" />
+    <Content Include="Views\Employees\Index.cshtml" />
+    <Content Include="Views\Employees\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -353,11 +356,8 @@
     <None Include="Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201807120214134_database.resx">
-      <DependentUpon>201807120214134_database.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201807120535123_sus.resx">
-      <DependentUpon>201807120535123_sus.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201807121648325_database.resx">
+      <DependentUpon>201807121648325_database.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

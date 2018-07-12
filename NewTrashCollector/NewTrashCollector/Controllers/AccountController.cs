@@ -81,6 +81,14 @@ namespace NewTrashCollector.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
+                    if (User.IsInRole("Employee"))
+                    {
+                        return RedirectToAction("Home", "Employees");
+                    }
+                    if (User.IsInRole("Customer"))
+                    {
+                        return RedirectToAction("Home", "Customers");
+                    }
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -159,6 +167,7 @@ namespace NewTrashCollector.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771   
@@ -167,7 +176,7 @@ namespace NewTrashCollector.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);   
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");   
                     //Assign Role to user Here      
-                    await this.UserManager.AddToRoleAsync(user.Id, model.UserRoles);
+                    
                     //Ends Here  
                     if (model.UserRoles.Equals("Customer"))
                     {

@@ -11,6 +11,6 @@ namespace NewTrashCollector.Models
         [Key]
         public int Id { get; set; }
 
-        public string Day { get; set; }
+        public DayOfWeek Day { get; set; }
     }
 }

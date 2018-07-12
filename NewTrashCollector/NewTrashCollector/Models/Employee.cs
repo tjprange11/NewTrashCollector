@@ -16,6 +16,6 @@ namespace NewTrashCollector.Models
         public string UserId { get; set; }
         public ApplicationUser User { get; set; }
 
-        public int? ZipCode { get; set; }
+        public string ZipCode { get; set; }
     }
 }

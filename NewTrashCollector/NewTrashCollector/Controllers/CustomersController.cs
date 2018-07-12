@@ -47,7 +47,11 @@ namespace NewTrashCollector.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(customer).State = EntityState.Modified;
+
+                var user = User.Identity.GetUserId();
+                Customer cust = db.Customers.Where(data => data.UserId.Equals(user)).Include(data => data.PickUpDay).First();
+                cust.PickUpDayId = customer.PickUpDayId;
+                db.Entry(cust).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("PickUpDetails");
             }
@@ -101,14 +105,14 @@ namespace NewTrashCollector.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,FullName,PickUpDayId")] Customer customer)
+        public ActionResult Create([Bind(Include = "Id,FirstName,LastName,FullName,PickUpDayId,Street,City,State,ZipCode")] Customer customer)
         {
             if (ModelState.IsValid)
             {
                 customer.UserId = User.Identity.GetUserId();
                 db.Customers.Add(customer);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
 
             return View(customer);

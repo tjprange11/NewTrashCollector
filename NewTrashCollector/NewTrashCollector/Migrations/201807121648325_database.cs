@@ -18,6 +18,10 @@ namespace NewTrashCollector.Migrations
                         PickUpDayId = c.Int(nullable: false),
                         ExtraPickUpDay = c.DateTime(),
                         AmountOwed = c.Double(nullable: false),
+                        Street = c.String(),
+                        City = c.String(),
+                        State = c.String(),
+                        ZipCode = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.PickUpDays", t => t.PickUpDayId, cascadeDelete: true)
@@ -30,7 +34,7 @@ namespace NewTrashCollector.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        Day = c.String(),
+                        Day = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -98,7 +102,7 @@ namespace NewTrashCollector.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         UserId = c.String(maxLength: 128),
-                        ZipCode = c.Int(),
+                        ZipCode = c.String(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
@@ -119,19 +123,19 @@ namespace NewTrashCollector.Migrations
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        EmployeeId = c.Int(nullable: false),
+                        CustomerId = c.Int(nullable: false),
                         Start = c.DateTime(nullable: false),
                         End = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Employees", t => t.EmployeeId, cascadeDelete: true)
-                .Index(t => t.EmployeeId);
+                .ForeignKey("dbo.Customers", t => t.CustomerId, cascadeDelete: true)
+                .Index(t => t.CustomerId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.SuspendedTimes", "EmployeeId", "dbo.Employees");
+            DropForeignKey("dbo.SuspendedTimes", "CustomerId", "dbo.Customers");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
             DropForeignKey("dbo.Employees", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Customers", "UserId", "dbo.AspNetUsers");
@@ -139,7 +143,7 @@ namespace NewTrashCollector.Migrations
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Customers", "PickUpDayId", "dbo.PickUpDays");
-            DropIndex("dbo.SuspendedTimes", new[] { "EmployeeId" });
+            DropIndex("dbo.SuspendedTimes", new[] { "CustomerId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
             DropIndex("dbo.Employees", new[] { "UserId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
