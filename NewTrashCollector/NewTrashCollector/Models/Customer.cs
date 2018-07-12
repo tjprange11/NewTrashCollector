@@ -12,6 +12,10 @@ namespace NewTrashCollector.Models
         [Key]
         public int Id { get; set; }
 
+        [ForeignKey("User")]
+        public string UserId { get; set; }
+        public ApplicationUser User { get; set; }
+
         [Display(Name ="First Name")]
         public string FirstName { get; set; }
 
@@ -24,10 +28,6 @@ namespace NewTrashCollector.Models
             get
             {
                 return FirstName + " " + LastName;
-            }
-            set
-            {
-                FullName = value;
             }
         }
         [ForeignKey("PickUpDay")]

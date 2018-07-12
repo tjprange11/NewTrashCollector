@@ -1,5 +1,7 @@
 namespace NewTrashCollector.Migrations
 {
+    using Microsoft.AspNet.Identity;
+    using Microsoft.AspNet.Identity.EntityFramework;
     using Models;
     using System;
     using System.Data.Entity;
@@ -36,35 +38,37 @@ namespace NewTrashCollector.Migrations
                 context.SaveChanges();
 
                 PickUpDay pickUp2 = new PickUpDay();
-                pickUp.Day = "Tuesday";
+                pickUp2.Day = "Tuesday";
                 context.PickUpDays.Add(pickUp2);
                 context.SaveChanges();
 
                 PickUpDay pickUp3 = new PickUpDay();
-                pickUp.Day = "Wednesday";
+                pickUp3.Day = "Wednesday";
                 context.PickUpDays.Add(pickUp3);
                 context.SaveChanges();
 
                 PickUpDay pickUp4 = new PickUpDay();
-                pickUp.Day = "Thursday";
+                pickUp4.Day = "Thursday";
                 context.PickUpDays.Add(pickUp4);
                 context.SaveChanges();
 
                 PickUpDay pickUp5 = new PickUpDay();
-                pickUp.Day = "Friday";
+                pickUp5.Day = "Friday";
                 context.PickUpDays.Add(pickUp5);
                 context.SaveChanges();
 
                 PickUpDay pickUp6 = new PickUpDay();
-                pickUp.Day = "Saturday";
+                pickUp6.Day = "Saturday";
                 context.PickUpDays.Add(pickUp6);
                 context.SaveChanges();
 
                 PickUpDay pickUp7 = new PickUpDay();
-                pickUp.Day = "Sunday";
+                pickUp7.Day = "Sunday";
                 context.PickUpDays.Add(pickUp7);
                 context.SaveChanges();
+
             }
         }
+        
     }
 }

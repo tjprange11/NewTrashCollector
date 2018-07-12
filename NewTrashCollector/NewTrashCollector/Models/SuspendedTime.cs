@@ -7,15 +7,14 @@ using System.Web;
 
 namespace NewTrashCollector.Models
 {
-    public class Employee
+    public class SuspendedTime
     {
         [Key]
         public int Id { get; set; }
-
-        [ForeignKey("User")]
-        public string UserId { get; set; }
-        public ApplicationUser User { get; set; }
-
-        public int? ZipCode { get; set; }
+        [ForeignKey("Customer")]
+        public int CustomerId { get; set; }
+        public Customer Customer { get; set; }
+        public DateTime Start { get; set; }
+        public DateTime End { get; set; }
     }
 }

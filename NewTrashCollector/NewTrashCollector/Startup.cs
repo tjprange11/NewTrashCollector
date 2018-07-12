@@ -14,7 +14,6 @@ namespace NewTrashCollector
             ConfigureAuth(app);
             createRolesandUsers();
         }
-
         private void createRolesandUsers()
         {
             ApplicationDbContext context = new ApplicationDbContext();
@@ -68,5 +67,7 @@ namespace NewTrashCollector
 
             }
         }
+
+
     }
 }
